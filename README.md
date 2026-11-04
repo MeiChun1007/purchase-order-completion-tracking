@@ -200,8 +200,8 @@ All queries use records with `state = 1` only. The details table has no state of
 |---|---|
 | `#__sot_purchase_orders` | PO header: `po_no`, `year`, `month`, `working_days`, `state` |
 | `#__sot_purchase_orders_details` | PO lines: part, model, `total_po`, `daily_plan_qty` (model may be stored as id or name) |
-| `#__incoming_orders` | Incoming; remark 1 = WO, 2 = PR, 7 = carried over |
-| `#__outgoing_orders` | Outgoing; remark 1 = Scrap, 2 = FG, 3 = NC, 4 = carried over |
+| `#__incoming_orders` | Incoming; WO, PR, AO |
+| `#__outgoing_orders` | Outgoing; Scrap, FG, NC, AO |
 | `#__production_summary` | `total_sort`, `total_nc`, `source` by date and model |
 | `#__product_catalogs`, `#__product_components` | Parts and models |
 | `#__calendar_holidays` | Holidays |
