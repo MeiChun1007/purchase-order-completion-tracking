@@ -19,7 +19,6 @@ The **SOT** component (`com_sot`) is the core of the site. It adds two report pa
 - [Configuration and maintenance](#configuration-and-maintenance)
 - [Export to Excel](#export-to-excel)
 - [Development notes](#development-notes)
-- [Version history](#version-history)
 
 ---
 
