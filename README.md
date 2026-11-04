@@ -25,11 +25,9 @@ The **SOT** component (`com_sot`) is the core of the site. It adds two report pa
 
 ## Screenshots
 
-Put screenshots in `docs/images/` and link them here:
-
 | SOT Results | SOT Daily Tracker |
 |---|---|
-| ![SOT Results](docs/images/sot-results.png) | ![SOT Daily Tracker](docs/images/sot-daily-tracker.png) |
+| ![SOT Results](screenshots/01-sot-results.png) | ![SOT Daily Tracker](screenshots/02-sot-daily-tracker.png) |
 
 ---
 
@@ -70,12 +68,16 @@ One card per model, with one column per day (or per month for the Year period) a
 
 Features: Period selector (Year / Month / Week / Date) with year, month and week pickers, sticky Group / Metric / Total columns while scrolling across days, Sundays and holidays shaded as Off, collapsible cards, filters for Part and Model, hover/tap tooltips with formulas, and an Excel export.
 
-### Purchase order entry
+### Purchase Order Entry
 
-Front-end form to create a PO (PO number, year, month, working days) with detail lines (part, model, total PO, daily plan quantity). A model can only be used once per PO. The back end has the PO list, the detail view and the Model Mapping screen.
+Front-end form to create a PO (PO number, year, month, working days) with detail lines (part, model, total PO, daily plan quantity). A model can only be used once per PO. 
+
+| Purchase Orders | Purchase Order's Details |
+|---|---|
+| ![Purchase Orders](screenshots/03-purchase-orders.png)  |  ![Purchase Order's Datails](screenshots/04-purchase-orders-details.png) |
 
 ---
-
+ 
 ## Repository layout
 
 ```
@@ -89,20 +91,16 @@ purchase-order-completion-tracking/
 │   ├── plg_ajax_importorders_package.zip
 │   ├── plg_ajax_updatepartmodel.zip
 │   └── plg_task_datasync.zip
+├── screenshots/                 
+│   ├── 01-sot-results.pngp       
+│   ├── 02-sot-daily-tracker.png
+│   ├── 03-purchase-orders.png
+│   ├── 04-purchase-orders-details.png
+│   ├── 05-incoming-orders.png
+│   ├── 06-outgoing-orders.png
+│   ├── 07-production-summary.png
+│   └── 08-production-list.png
 └── README.md
-```
-
-### Inside `com_sot`
-
-```
-administrator/   Back end: PO list/detail, Model Mapping, forms, SQL install/update scripts
-site/            Front end: forms, models, controllers, views and templates
-  src/Helper/SotReport.php        Pure calculation rules (no database, unit-testable)
-  src/Helper/SotReportData.php    Queries and model mapping
-  src/Model/SotsummaryModel.php   SOT Results data
-  src/Model/SotdailyModel.php     SOT Daily Tracker data
-  tmpl/sotsummary/ tmpl/sotdaily/ tmpl/purchaseorderform/
-media/           css/report.css, js/report.js, js/po-form.js, joomla.asset.json
 ```
 
 ---
@@ -135,7 +133,12 @@ media/           css/report.css, js/report.js, js/po-form.js, joomla.asset.json
 |---|---|
 | SOT Results | `index.php?option=com_sot&view=sotsummary` |
 | SOT Daily Tracker | `index.php?option=com_sot&view=sotdaily` |
-| Purchase order form | `index.php?option=com_sot&view=purchaseorderform` |
+| Purchase | `index.php?option=com_sot&view=purchaseorders` |
+| PO Details | `index.php?option=com_sot&view=purchaseorderdetails` |
+| Incoming | `index.php?option=com_incoming&view=incomingorders` |
+| Outgoing | `index.php?option=com_outgoing&view=outgoingorders` |
+| Production | `index.php?option=com_production&view=productionreport` |
+| Production List | `index.php?option=com_production&view=productionsummaries` |
 
 Both reports are read-only and open to any user who can see the menu item, so set the menu item access level accordingly.
 
@@ -203,7 +206,6 @@ All queries use records with `state = 1` only. The details table has no state of
 | `#__production_summary` | `total_sort`, `total_nc`, `source` by date and model |
 | `#__product_catalogs`, `#__product_components` | Parts and models |
 | `#__calendar_holidays` | Holidays |
-| `#__sot_model_map` | Created by the 1.0.4 update; see below |
 
 Remark values are constants in `site/src/Helper/SotReport.php` (`IN_WO`, `IN_PR`, `IN_CARRY`, `OUT_SCRAP`, `OUT_FG`, `OUT_NC`, `OUT_CARRY`). Change them there if the meaning of a remark changes.
 
@@ -252,15 +254,3 @@ Both pages have an **Export to Excel** button that calls the `plg_ajax_export` p
 - Styles are scoped under `.sot` in `media/css/report.css`; behaviour is in `media/js/report.js` (auto-submit, period presets, filters, tabs, row click, Choices dropdowns).
 - Every user-facing string is a `COM_SOT_*` key in `site/languages/en-GB/com_sot.ini`.
 - Never commit `configuration.php`, database dumps or credentials.
-
----
-
-## Version history
-
-| Version | Changes |
-|---|---|
-| 1.0.4 | Model mapping for production variants |
-| 1.0.3 | SOT Results and SOT Daily Tracker views |
-| 1.0.0 – 1.0.2 | Purchase order entry and back end |
-
-Update this table when you tag a release, and attach the installer zip to the GitHub release.
