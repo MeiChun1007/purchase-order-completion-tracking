@@ -205,8 +205,8 @@ Quantities brought forward from the previous period. They are shown in their own
 
 | Metric | Source |
 |---|---|
-| Incoming Normal (WO) | Incoming orders with remark `7` |
-| Outgoing FG | Outgoing orders with remark `4` |
+| Incoming Normal (WO) | Incoming orders with remark `AO` |
+| Outgoing FG | Outgoing orders with remark `AO` |
 | Total Sort, Total NC, Total Accepted | Production rows where `source = 'manual'` |
 
 Manual production rows are not repeated in the daily columns.
