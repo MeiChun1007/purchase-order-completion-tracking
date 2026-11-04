@@ -71,9 +71,30 @@ Features: Period selector (Year / Month / Week / Date) with year, month and week
 
 Front-end form to create a PO (PO number, year, month, working days) with detail lines (part, model, total PO, daily plan quantity). A model can only be used once per PO. 
 
+![Purchase Order Form](screenshots/09-purchase-order-form.png)
+
 | Purchase Orders | Purchase Order's Details |
 |---|---|
 | ![Purchase Orders](screenshots/03-purchase-orders.png)  |  ![Purchase Order's Datails](screenshots/04-purchase-orders-details.png) |
+
+
+### Incoming Orders
+
+The place to store incoming orders (Doc No, date, models, quantity).
+
+![Incoming Orders](screenshots/05-incoming-orders.png)
+
+### Outgoing Orders
+
+The place to store outgoing orders (Doc No, date, models, quantity).
+
+![Outgoing Orders](screenshots/06-outgoing-orders.png)
+
+### Production
+
+| Production Summary | Production List |
+|---|---|
+| ![Production Summary](screenshots/07-production-summary.png)  |  ![Production List](screenshots/08-production-list.png) |
 
 ---
  
